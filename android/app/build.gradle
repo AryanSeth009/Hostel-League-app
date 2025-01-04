@@ -34,8 +34,8 @@ android {
         // Update the minSdkVersion to 23 as suggested in the error message.
         minSdkVersion 23
         targetSdk = flutter.targetSdkVersion
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 7
+        versionName "7.0.0"
         multiDexEnabled true
     }
 signingConfigs {
