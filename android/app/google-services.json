@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "618419776372",
+    "project_id": "hostel-league",
+    "storage_bucket": "hostel-league.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618419776372:android:0187e48301a7f4cd14da21",
+        "android_client_info": {
+          "package_name": "com.tnps.rolebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618419776372-rifmtsd1tb7phvmbpk4qsirtsc15s9us.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tnps.rolebase",
+            "certificate_hash": "706792ca44d9e78340a66bd9b3cdeda0a8047644"
+          }
+        },
+        {
+          "client_id": "618419776372-94jkm4d30io5e4cqf8lr2kcr8p31mt7t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7XnveXQHSUuYzhqTkNvbAXy86q29zhGY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "618419776372-94jkm4d30io5e4cqf8lr2kcr8p31mt7t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
