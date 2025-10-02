@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "618419776372-rifmtsd1tb7phvmbpk4qsirtsc15s9us.apps.googleusercontent.com",
+          "client_id": "618419776372-bdp6e8he1t2fevac86cflltcesco70or.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.tnps.rolebase",
-            "certificate_hash": "706792ca44d9e78340a66bd9b3cdeda0a8047644"
+            "certificate_hash": "93f5b6a4320aa6b4b19ab41213cee7207df3a279"
           }
         },
         {

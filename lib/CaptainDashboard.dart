@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart'; // Remove Firestore import
+import 'package:cloud_firestore/cloud_firestore.dart'; // Remove Firestore import
 import 'package:rolebase/Scoreboard.dart'; 
 import 'management_info_screen.dart';
 import 'package:rolebase/Captain/AnnaWarriorCaptain.dart';
@@ -76,15 +76,15 @@ class _CaptainLandingPageState extends State<CaptainLandingPage> {
 
   Future<List<String>> _fetchPhotoUrls() async {
     try {
-      // DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('gallery').doc('photos').get(); // Original Firestore call commented out
+      DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('gallery').doc('photos').get();
       List<String> photoUrls = [];
 
       // Assuming your photos are stored in fields pic1, pic2, pic3, ..., pic7
       for (int i = 1; i <= 10; i++) {
-        // String? url = snapshot.get('pic$i'); // Original Firestore call commented out
-        // if (url != null) { // Original Firestore call commented out
-        //   photoUrls.add(url); // Original Firestore call commented out
-        // } // Original Firestore call commented out
+        String? url = snapshot.get('pic$i');
+        if (url != null) {
+          photoUrls.add(url);
+        }
       }
 
       return photoUrls;
@@ -105,19 +105,19 @@ class _CaptainLandingPageState extends State<CaptainLandingPage> {
   Future<String?> fetchPDFLink() async {
   try {
     // Fetch the document from Firestore
-    // DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance // Original Firestore call commented out
-    //     .collection('Rulebook')  // Replace with your collection name // Original Firestore call commented out
-    //     .doc('PDF')      // Replace with your document ID // Original Firestore call commented out
-    //     .get(); // Original Firestore call commented out
+    DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
+        .collection('Rulebook')  // Replace with your collection name
+        .doc('PDF')      // Replace with your document ID
+        .get();
 
     // Check if the document exists
-    // if (documentSnapshot.exists) { // Original Firestore call commented out
-    //   // Extract the 'link' field from the document // Original Firestore call commented out
-    //   String pdfLink = documentSnapshot['link'];  // Assuming the field is named 'link' // Original Firestore call commented out
-    //   return pdfLink;  // Return the PDF link // Original Firestore call commented out
-    // } else { // Original Firestore call commented out
-    //   print('Document does not exist'); // Original Firestore call commented out
-    // } // Original Firestore call commented out
+    if (documentSnapshot.exists) {
+      // Extract the 'link' field from the document
+      String pdfLink = documentSnapshot['link'];  // Assuming the field is named 'link'
+      return pdfLink;  // Return the PDF link
+    } else {
+      print('Document does not exist');
+    }
   } catch (e) {
     print('Error fetching document: $e');
   }

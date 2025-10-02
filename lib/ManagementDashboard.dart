@@ -89,7 +89,7 @@ class _ManagementLandingPageState extends State<ManagementLandingPage> {
           photoUrls.add(url);
         }
       }
-
+      print('Fetched photo URLs: $photoUrls'); // Debug print
       return photoUrls;
     } catch (e) {
       throw Exception("Failed to fetch photos: $e");
