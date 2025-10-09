@@ -1,7 +1,7 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:rolebase/Captain/AnnouncementCaptain.dart';
 import 'package:rolebase/Captain/HistoryCaptain.dart';
+import 'package:rolebase/Captain/UpdateStoriesCaptain.dart';
 import 'package:rolebase/CaptainDashboard.dart';
 import 'package:rolebase/announcement.dart';
 import 'package:rolebase/history_screen.dart';
@@ -32,6 +32,7 @@ class _HomePageState extends State<HomePage> {
     CaptainLandingPage(),
     CaptainViewMessageScreen(), // Captain-specific announcements
     HistoryCaptain(), // Shared screen for captains
+    UpdateStoriesCaptain(), // New screen for updating stories
   ];
 
   // Handle bottom navigation tap
@@ -60,6 +61,7 @@ class _HomePageState extends State<HomePage> {
         Icon(Icons.home, size: 30),
         Icon(Icons.announcement, size: 30),
         Icon(Icons.history, size: 30),
+        Icon(Icons.newspaper, size: 30), // New icon for Update Stories
       ];
     } else {
       // Handle unknown roles

@@ -55,18 +55,20 @@ class _HistoryScreenState extends State<HistoryScreen> {
     'Final',
   ];
 
-  final List<int> _pointsOptions = [0, 2, 3, 5];
+  final List<int> _pointsOptions = [0,1, 2,3, 4,5, 6, 7, 8];
 
   final List<String> _nameDropdown = [
-    'Uday Rudrakar',
-    'Kushal Khadgi',
-    'Nakul Wanjari',
-    'Kevin Beji',
-    'Steavo Babu',
-    'Atharva Men',
-    'Omkar Gangamwar',
-    'Om Gawande',
-    'Gaurav Pididkar'
+    'Shahzab ali',
+    'Sam Chacko Ruby',
+    'Gaurav Pidurkar',
+    'Yash Gawande',
+    'Shahid sameer',
+    'Devesh banote',
+    'Mayank Saha',
+    'Sparsh Chalotra',
+    'Nainesh Zod',
+    'Omkar Pachbhai'
+
   ];
 
   bool _isUploading = false; 

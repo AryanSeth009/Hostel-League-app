@@ -6,11 +6,16 @@ class EmergencyContactScreen extends StatelessWidget {
     {'name': 'Fr. Roby', 'phone': '+91 9686018612'},
     {'name': 'Roy Joseph', 'phone': '+91 7776860002'},
     {'name': 'Hostel Reception', 'phone': '+91 9403554750'},
-    {'name': 'Steavo Babu', 'phone': '+91 9699579704'},
-    {'name': 'Atharva Men', 'phone': '+91 7499752762'},
-    {'name': 'Omkar Gangamwar', 'phone': '+91 8766734653'},
-    {'name': 'Om Gawande', 'phone': '+91 9766839371'},
+    {'name': 'Shahzab ali', 'phone': '+91 7889847053'},
+    {'name': 'Sam Chacko Ruby', 'phone': '+91 8848438994'},
     {'name': 'Gaurav Pidurkar', 'phone': '+91 8788498617'},
+    {'name': 'Yash Gawande', 'phone': '+91 8261903434'},
+    {'name': 'Shahid sameer', 'phone': '+91 9103843551'},
+    {'name': 'Devesh banote', 'phone': '+91 8010369855'},
+    {'name': 'Mayank Saha', 'phone': '+91 8871334457'},
+    {'name': 'Sparsh Chalotra', 'phone': '+91 7889964900'},
+    {'name': 'Omkar Pachbhai', 'phone': '+91 8308202440'},
+    {'name': 'Nainesh Zod', 'phone': '+91 9021667707'},
   ];
 
   Future<void> _launchPhone(String phoneNumber) async {

@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'dart:async';
@@ -21,6 +20,7 @@ import 'LoginPage.dart';
 import 'Grivance.dart';
 import 'stories.dart';
 import 'package:rolebase/Photos.dart';
+import 'package:rolebase/team_data_uploader.dart';
 
 class ManagementLandingPage extends StatefulWidget {
   @override
@@ -228,6 +228,21 @@ class _ManagementLandingPageState extends State<ManagementLandingPage> {
             _buildDrawerItem(context, Icons.image_outlined, 'Photos', () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => GalleryScreen()));
             }),
+            _buildDrawerItem(context, Icons.upload, 'Upload All CSV Data', () async {
+              try {
+                await TeamDataUploader.uploadAllTeamDataFromCSV();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('All team data from CSV files uploaded successfully!')),
+                );
+              } catch (e) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Error uploading CSV data: $e')),
+                );
+              }
+            }),
+            _buildDrawerItem(context, Icons.group, 'Upload Individual Teams', () {
+              _showTeamUploadDialog(context);
+            }),
             _buildDrawerItem(context, Icons.logout_rounded, 'Logout', () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => LoginPage()));
             }),
@@ -385,6 +400,65 @@ class _ManagementLandingPageState extends State<ManagementLandingPage> {
       leading: Icon(icon),
       title: Text(title),
       onTap: () => onTap(),
+    );
+  }
+
+  // Show dialog for individual team uploads
+  void _showTeamUploadDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Upload Team Data'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('Select a team to upload CSV data:'),
+              SizedBox(height: 20),
+              _buildTeamUploadButton(context, 'The Scout Regiment', 'scout regiment.csv'),
+              _buildTeamUploadButton(context, 'White Walkers', 'white walker.csv'),
+              _buildTeamUploadButton(context, 'Rising Giants', 'rising giants.csv'),
+              _buildTeamUploadButton(context, 'Anna Warriors', 'anna.csv'),
+              _buildTeamUploadButton(context, 'Black Eagles', 'black_eagles.csv'),
+              _buildTeamUploadButton(context, 'Defending Titans', 'defending.csv'),
+              _buildTeamUploadButton(context, 'Retro Rivals', 'Retro_main.csv'),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text('Cancel'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  // Build team upload button
+  Widget _buildTeamUploadButton(BuildContext context, String teamName, String csvFile) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 4),
+      child: ElevatedButton(
+        onPressed: () async {
+          Navigator.of(context).pop();
+          try {
+            await TeamDataUploader.uploadTeamData(teamName);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('$teamName data uploaded successfully!')),
+            );
+          } catch (e) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Error uploading $teamName data: $e')),
+            );
+          }
+        },
+        child: Text(teamName),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color.fromARGB(255, 255, 180, 68),
+          foregroundColor: Colors.black,
+        ),
+      ),
     );
   }
 }

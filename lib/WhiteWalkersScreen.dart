@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart'; // Import Firestore
 import 'package:flutter/rendering.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart'; // Import Firestore
 
 class WhiteWalkersScreen extends StatelessWidget {
   final String teamName = 'White Walkers'; // Automatically set team name
@@ -34,8 +32,10 @@ class WhiteWalkersScreen extends StatelessWidget {
 
           // Sort documents alphabetically by 'name'
           documents.sort((a, b) {
-            final nameA = a['name'] ?? '';
-            final nameB = b['name'] ?? '';
+            final dataA = a.data() as Map<String, dynamic>?;
+            final dataB = b.data() as Map<String, dynamic>?;
+            final nameA = dataA?['name'] ?? '';
+            final nameB = dataB?['name'] ?? '';
             return nameA.compareTo(nameB);
           });
 
@@ -43,8 +43,9 @@ class WhiteWalkersScreen extends StatelessWidget {
             itemCount: documents.length,
             itemBuilder: (context, index) {
               final doc = documents[index];
-              final name = doc['name'] ?? 'Unnamed';
-              final sports = List<String>.from(doc['sports'] ?? []);
+              final data = doc.data() as Map<String, dynamic>?;
+              final name = data?['name'] ?? 'Unnamed';
+              final sports = List<String>.from(data?['sports'] ?? []);
               final documentId = doc.id;
 
               return ListTile(
@@ -61,7 +62,7 @@ class WhiteWalkersScreen extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        if (doc['player_status'] == "true") // Check if player_status is true
+                        if (data?['player_status'] == "true") // Check if player_status is true
                           Text(
                             'Blocked', // Display Blocked if player_status is true
                             style: TextStyle(
@@ -91,7 +92,7 @@ class WhiteWalkersScreen extends StatelessWidget {
                 },
                 onLongPress: () async {
                   // Determine the current player status
-                  bool isBlocked = doc['player_status'] == "true";
+                  bool isBlocked = data?['player_status'] == "true";
 
                   // Show a confirmation dialog based on the current status
                   bool? confirm = await showDialog(
@@ -458,7 +459,6 @@ class _AddMemberFormScreenState extends State<AddMemberFormScreen> {
 
 
 
-
 class MemberDetailsScreen extends StatelessWidget {
   final String documentId;
 
@@ -600,6 +600,8 @@ class MemberDetailsScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                
+                
               ],
             ),
           );
